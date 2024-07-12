@@ -1,26 +1,25 @@
 ///Servidor Estatico
 
 
-const http = require ('http');
-const fs = require ('fs');
+const express = require ('express');
+const app = express ();
+const port = 5000;
 
-
-    //    const server = http.createServer((req,res)=>{
-    //    res.writeHead (200, {
-    //        'Content-Type':'text/html, charset=UTF-8'
-    //    });
-    //    res.end ('hi ly');
-    //    } );
-
-const server = http.createServer((req,res)=>{
-    const file = fs.readFileSync(__dirname + '/proyecto_movies_cac/index_fijo.html')
-    res.writeHead(200,{
-    'Content-Type': 'text/html; charset=UTF-8'
-    });
-    res.end(file);
+app.use(express.static('public'));
+ 
+app.get('/home',(req,res)=>{
+ 
+    res.send('hi Lulu carita fea fea');
+  
 });
 
-server.listen(5000, ()=> console.log(
+app.get('/index_fijo',(req,res)=>{
+ 
+    res.sendFile(__dirname + '/index_fijo.html');
+   
+});
 
-    "El Servidor esta encendido http://localhost:5000"
-));
+app.listen(port, () => {
+    console.log(`El Servidor esta encendido http://localhost:${port}/`
+);
+});
