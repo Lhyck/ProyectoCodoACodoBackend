@@ -4,12 +4,19 @@
 const express = require ('express');
 const app = express ();
 const port = 5000;
-
-app.use(express.static('public'));
  
+const movieRouters = require ('./src/routers/movies');
+
+
+//app.use(express.static('public'));
+
+app.use(express.json);
+app.use('/movies', movieRouters);
+
+
 app.get('/home',(req,res)=>{
  
-    res.send('hi Lulu carita fea fea');
+    res.send('Bienvenidos al sitio !!!!');
   
 });
 
