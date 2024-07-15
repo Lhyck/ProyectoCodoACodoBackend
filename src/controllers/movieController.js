@@ -7,9 +7,17 @@ const getAllMovies = (req, res) => {
         res.json (results);
     });
 };
+
+
 const getMovieById = (req, res) => {
-    
-}
+    const { id_pelicula } = req.params;
+    const sql = 'SELECT * FROM peliculas WHERE id_pelicula = ?';
+    db.query(sql, [id_pelicula], (err, result) => {
+        if (err) throw err;
+        res.json({message: 'Estado actual de los resultados'});
+    });
+};
+
 
 const deleteMovie = (req, res ) => {
     db.query(sql, [id],(err, result) =>{

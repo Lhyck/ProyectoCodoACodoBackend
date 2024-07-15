@@ -6,7 +6,7 @@ const router = require ('router')
 
 app.post('/public/pages/iniciosesion.html', (req, res) => {
     console.log(req.body)
-    const name = req.body;
-    const password = req.body;
+    const email = req.body;
+    const passwork = req.body;
     res.send("ok")
 })
